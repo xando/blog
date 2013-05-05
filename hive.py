@@ -15,7 +15,7 @@ class StaticSite(buzzy.Base):
         results = []
         for post in posts:
             results.append({
-                "name": post.replace('md','html'),
+                "name": post.basename.replace('md','html'),
                 "content": index.content % md.convert(post.content),
                 "title": md.Meta['title'][0],
                 "date": md.Meta['date'][0],
