@@ -5,11 +5,8 @@ $(function() {
 
 	$(document).pjax('a', FRAGMENT_NAME, {'fragment': FRAGMENT_NAME});
 
-	if (window.location.pathname.length > 1) {
-		$.pjax({
-			url: window.location.pathname,
-			container: FRAGMENT_NAME,
-			fragment: FRAGMENT_NAME
-		});
-	}
+	$(window).focus(function(){
+		$.pjax({url: window.location.pathname,container: FRAGMENT_NAME,fragment: FRAGMENT_NAME});
+	});
+
 });

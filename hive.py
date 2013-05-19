@@ -1,47 +1,77 @@
 import buzzy
 import markdown
 
+from datetime import datetime
 from dateutil import parser
 from pygments.formatters import HtmlFormatter
+
+from jinja2 import Environment, FileSystemLoader
+
+env = Environment(loader=FileSystemLoader('templates'))
+template = lambda x:env.get_template(buzzy.path(x))
 
 
 class StaticSite(buzzy.Base):
 
     PYGMENTS_STYLE = "emacs"
 
-    @buzzy.memoized
-    def get_posts(self, posts, index):
+    def get_posts(self, posts):
         md = markdown.Markdown(extensions=['codehilite', 'meta'])
         results = []
         for post in posts:
-            results.append({
-                "name": post.basename.replace('md','html'),
-                "content": index.content % md.convert(post.content),
-                "title": md.Meta['title'][0],
-                "date": md.Meta['date'][0],
-                "date-object": parser.parse(md.Meta['date'][0])
-            })
+            content = md.convert(post.content)
+            if md.Meta.get('publish', [False])[0]:
 
-        results.sort(key=lambda x:x['date-object'])
+                results.append({
+                    "name": post.replace('md','html'),
+                    "content": content,
+                    "title": md.Meta['title'][0],
+                    "date": md.Meta['date'][0],
+                    "dateobject": parser.parse(md.Meta['date'][0])
+                })
+
+        results.sort(key=lambda x:x['dateobject'], reverse=True)
         return results
 
     @buzzy.render
     def pygments(self):
-        return {
-            "name": "pygments.css",
-            "content": HtmlFormatter(style=self.PYGMENTS_STYLE).get_style_defs()
-        }
+        return "pygments.css", HtmlFormatter(style=self.PYGMENTS_STYLE).get_style_defs()
 
-    @buzzy.render('index.html', 'posts')
-    def index(self, index, posts):
+    @buzzy.render
+    def index(self):
+        index_template = template('index.html')
 
-        content = "".join([
-            '<a href="%(name)s"><h1>%(title)s</h1></a><div class="break">...</div>' % e
-            for e in self.get_posts(posts, index)
-        ])
+        posts = self.get_posts(buzzy.path('posts'))
+        return 'index.html', index_template.render(posts=posts)
 
-        return {"name": index.basename, "content": index.content % content}
+    @buzzy.render
+    def posts(self):
+        post_template = template('post.html')
 
-    @buzzy.render('posts', 'index.html')
-    def posts(self, posts, index):
-        return self.get_posts(posts, index)
+        posts = self.get_posts(buzzy.path('posts'))
+        return [(p['name'], post_template.render(post=p)) for p in posts]
+
+    @buzzy.render
+    def about(self):
+        about_template = template('about.html')
+
+        return 'about.html', about_template.render()
+
+    @buzzy.render
+    def rss(self):
+        rss_template = template('rss.xml')
+
+        posts = self.get_posts(buzzy.path('posts'))
+        return 'rss.xml', rss_template.render(posts=posts)
+
+    @buzzy.command
+    def publish(self, args):
+        self._build()
+
+        with buzzy.path(self.BUILD_DIR) as p:
+            p.run('git init')
+            p.run('git remote add origin git@github.com:xando/xando.github.com.git')
+            p.run('git add -A')
+            p.run('git commit -m "published"')
+            p.run('git push --force')
+        print "Published %s" % datetime.now()

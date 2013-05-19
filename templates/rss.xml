@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  
+  <channel>
+    <title>x_O's blog</title>
+    <link>http://xando.org/</link>
+    <description>x_O's blog</description>
+    <language>en-us</language>
+    <ttl>60</ttl>
+
+    {% block content %}
+    {% for post in posts %}
+    <item>
+      <title>{{ post.title }}</title>
+      <link>{{ post.name }}</link>
+      <pubDate>{{ post.dateobject }}</pubDate>
+      <guid>{{ post.name }}</guid>
+    </item>
+    {% endfor %}
+    {% endblock %}
+  </channel>
+
+</rss>

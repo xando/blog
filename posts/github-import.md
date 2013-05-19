@@ -1,11 +1,10 @@
-Title:   Import python modules from Github (PEP 302)
+Title:   Import python modules from Github (PEP 303)
 Summary: A brief description of my document.
-Authors: Waylan Limberg
-         John Doe
-Date:    October 2, 2010
+Date:    January 15, 2013
+Publish: True
 
 
-# Import python modules from Github (PEP 302) #
+# Import python modules from Github (PEP 303) #
 
 or what if this would be possible?
 
@@ -30,6 +29,6 @@ quite possible.
 
 The magic will happen in github_import module.  The module is messing
 around with import hooks and use of PEP 302.  If you are interested
-how it works, implementation might be find
+how it works, implementation might be found
 [here](https://github.com/xando/github_import).
 
