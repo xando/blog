@@ -24,6 +24,7 @@ class StaticSite(buzzy.Base):
 
                 results.append({
                     "name": post.replace('md','html'),
+                    "source": post.content,
                     "content": content,
                     "title": md.Meta['title'][0],
                     "date": md.Meta['date'][0],
@@ -39,30 +40,22 @@ class StaticSite(buzzy.Base):
 
     @buzzy.render
     def index(self):
-        index_template = template('index.html')
-
         posts = self.get_posts(buzzy.path('posts'))
-        return 'index.html', index_template.render(posts=posts)
+        return 'index.html', template('index.html').render(posts=posts)
 
     @buzzy.render
     def posts(self):
-        post_template = template('post.html')
-
         posts = self.get_posts(buzzy.path('posts'))
-        return [(p['name'], post_template.render(post=p)) for p in posts]
+        return [(p['name'], template('post.html').render(post=p)) for p in posts]
 
     @buzzy.render
     def about(self):
-        about_template = template('about.html')
-
-        return 'about.html', about_template.render()
+        return 'about.html', template('about.html').render()
 
     @buzzy.render
     def rss(self):
-        rss_template = template('rss.xml')
-
         posts = self.get_posts(buzzy.path('posts'))
-        return 'rss.xml', rss_template.render(posts=posts)
+        return 'rss.xml', template('rss.xml').render(posts=posts)
 
     @buzzy.command
     def publish(self, args):
