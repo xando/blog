@@ -5,16 +5,12 @@ from datetime import datetime
 from dateutil import parser
 from pygments.formatters import HtmlFormatter
 
-from jinja2 import Environment, FileSystemLoader
-
-env = Environment(loader=FileSystemLoader('templates'))
-template = lambda x:env.get_template(buzzy.path(x))
-
 
 class StaticSite(buzzy.Base):
 
     PYGMENTS_STYLE = "emacs"
 
+    @buzzy.memoized
     def get_posts(self, posts):
         md = markdown.Markdown(extensions=['codehilite', 'meta'])
         results = []
@@ -41,21 +37,21 @@ class StaticSite(buzzy.Base):
     @buzzy.render
     def index(self):
         posts = self.get_posts(buzzy.path('posts'))
-        return 'index.html', template('index.html').render(posts=posts)
+        return 'index.html', self.render_template('index.html', posts=posts)
 
     @buzzy.render
     def posts(self):
         posts = self.get_posts(buzzy.path('posts'))
-        return [(p['name'], template('post.html').render(post=p)) for p in posts]
+        return [(p['name'], self.render_template('post.html', post=p)) for p in posts]
 
     @buzzy.render
     def about(self):
-        return 'about.html', template('about.html').render()
+        return 'about.html', self.render_template('about.html')
 
     @buzzy.render
     def rss(self):
         posts = self.get_posts(buzzy.path('posts'))
-        return 'rss.xml', template('rss.xml').render(posts=posts)
+        return 'rss.xml', self.render_template('rss.xml', posts=posts)
 
     @buzzy.command
     def publish(self, args):
@@ -68,3 +64,4 @@ class StaticSite(buzzy.Base):
             p.run('git commit -m "published"')
             p.run('git push --force')
         print "Published %s" % datetime.now()
+
