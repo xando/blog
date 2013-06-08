@@ -1,6 +1,5 @@
-from buzzy import render
 import buzzy
-import markdown
+from buzzy import render
 
 from datetime import datetime
 from dateutil import parser
@@ -11,25 +10,16 @@ class StaticSite(buzzy.Base):
 
     PYGMENTS_STYLE = "emacs"
     INCLUDE = ['CNAME', 'libs/', 'img/']
-    BUILD_DIR = "build"
 
     @buzzy.memoized
     def get_posts(self):
-        md = markdown.Markdown(extensions=['codehilite', 'meta'])
-        results = []
-        for post in buzzy.path('posts'):
-            content = md.convert(post.content)
-            if md.Meta.get('publish', [False])[0]:
-                results.append({
-                    "name": post.replace('md','html'),
-                    "source": post.content,
-                    "content": content,
-                    "title": md.Meta['title'][0],
-                    "date": md.Meta['date'][0],
-                    "dateobject": parser.parse(md.Meta['date'][0])
-                })
-
-        results.sort(key=lambda x:x['dateobject'], reverse=True)
+        results = [
+            render.markdown(post.replace('md','html'), post) for post in
+            buzzy.path('posts')
+        ]
+        results.sort(
+            key=lambda x:parser.parse(x.meta['date']), reverse=True
+        )
         return results
 
     @buzzy.register
@@ -46,7 +36,7 @@ class StaticSite(buzzy.Base):
     @buzzy.register
     def posts(self):
         for post in self.get_posts():
-            yield render.template(post['name'], 'post.html', post=post)
+            yield render.template(post.name, "post.html", post=post)
 
     @buzzy.register
     def about(self):

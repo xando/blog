@@ -3,8 +3,8 @@
 {% block content %}
 {% for post in posts %}
 <h1>
-	<a href="{{ post.name }}">{{ post.title }}</a>
+	<a href="{{ post.name }}">{{ post.meta.title }}</a>
 </h1>
-<i>{{ post.date }}</i>
+<i>{{ post.meta.date }}</i>
 {% endfor %}
 {% endblock %}
