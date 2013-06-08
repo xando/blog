@@ -1,3 +1,4 @@
+from buzzy import render
 import buzzy
 import markdown
 
@@ -9,15 +10,16 @@ from pygments.formatters import HtmlFormatter
 class StaticSite(buzzy.Base):
 
     PYGMENTS_STYLE = "emacs"
+    INCLUDE = ['CNAME', 'libs/', 'img/']
+    BUILD_DIR = "build"
 
     @buzzy.memoized
-    def get_posts(self, posts):
+    def get_posts(self):
         md = markdown.Markdown(extensions=['codehilite', 'meta'])
         results = []
-        for post in posts:
+        for post in buzzy.path('posts'):
             content = md.convert(post.content)
             if md.Meta.get('publish', [False])[0]:
-
                 results.append({
                     "name": post.replace('md','html'),
                     "source": post.content,
@@ -30,28 +32,29 @@ class StaticSite(buzzy.Base):
         results.sort(key=lambda x:x['dateobject'], reverse=True)
         return results
 
-    @buzzy.render
+    @buzzy.register
     def pygments(self):
-        return "pygments.css", HtmlFormatter(style=self.PYGMENTS_STYLE).get_style_defs()
+        content = HtmlFormatter(style=self.PYGMENTS_STYLE).get_style_defs()
+        yield render.content("pygments.css", content)
 
-    @buzzy.render
+    @buzzy.register
     def index(self):
-        posts = self.get_posts(buzzy.path('posts'))
-        return 'index.html', self.render_template('index.html', posts=posts)
+        yield render.template(
+            'index.html', "index.html", posts=self.get_posts()
+        )
 
-    @buzzy.render
+    @buzzy.register
     def posts(self):
-        posts = self.get_posts(buzzy.path('posts'))
-        return [(p['name'], self.render_template('post.html', post=p)) for p in posts]
+        for post in self.get_posts():
+            yield render.template(post['name'], 'post.html', post=post)
 
-    @buzzy.render
+    @buzzy.register
     def about(self):
-        return 'about.html', self.render_template('about.html')
+        yield render.template('about.html', 'about.html')
 
-    @buzzy.render
+    @buzzy.register
     def rss(self):
-        posts = self.get_posts(buzzy.path('posts'))
-        return 'rss.xml', self.render_template('rss.xml', posts=posts)
+        yield render.template('rss.xml', 'rss.xml', posts=self.get_posts())
 
     @buzzy.command
     def publish(self, args):
@@ -65,3 +68,6 @@ class StaticSite(buzzy.Base):
             p.run('git push --force')
         print "Published %s" % datetime.now()
 
+
+if __name__ == "__main__":
+    StaticSite()
