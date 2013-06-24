@@ -1,45 +1,57 @@
 Title:   from os import path2
-Date:    May 05, 2013
-Publish: preview
+Date:    Jun 24, 2013
+status:  publish
 
 # from os import path2
 
-There are things that are a bit annoying in **os** module inside
-Python standard library. First thing that really annoys me is
-**os.path** and path handling in it. Python as objected oriented
-language has this really cool idea that everything is an object, even
-class definition and functions are objects as well. Well path is a object
-in there but it's string object not path object. Since is really easy to observe that by design path file,
-directory have something to say about themselves. 
-I decided to propose something on this subject and created an Python package called **os.path2**. 
+There are few things that are a bit annoying for me in **os** module inside
+Python standard library. One of those things surely for me would be
+the **os.path** module and path handling in it. Python as objected oriented
+language, and it has this really cool idea that everything is an object, even
+class definition and functions are objects. 
 
+Well path is a object as well
+in there but it's a string object not a **path** object. 
+Since is really easy to observe that by design files and 
+directories have something more to say about themselves than a string object can carry.
 
 ## the thing
 
-Python is often compared with Ruby, then let's have a look how things are
-done there
-[Pathname](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/pathname/rdoc/Pathname.html), 
-despite the fact that you like Ruby or not, we can say that the **Pathname** API is pretty good. 
-Following few ideas borrowed Ruby, decided to create my own path implementation created
-[os.path2](http://ospath2.xando.org/) a "more" object oriented
+Python is often compared with Ruby, so let's have a look how things are
+done there in
+[Pathname](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/pathname/rdoc/Pathname.html).
+Despite the fact if you like Ruby or not, 
+I think we can say that the **Pathname** API is pretty good. 
+So following few ideas borrowed Ruby, I decided to propose something on this subject and decided to create my own path implementation. 
+As a result created an Python package called it [os.path2](http://ospath2.xando.org/) the new version of **os.path** with a "more" object oriented
 approach to path handling in Python. 
+
+
+Bellow few examples what is possible with the package.
+
 
 *********
 
 	:::python
 	
-	>>> from os import path2 as path
+	>>> from os import path2
 
-    >>> path('/var/log')
+    >>> path2('/var/log')
     /var/log
 
-    >>> path('/var', 'log')
+    >>> path2('/var', 'log')
     /var/log
+	
+	>>> path2('/var/log/syslog').a_time
+	1358549788.7512302
 
-    >>> path('/home/you/file').user
+    >>> path2('/home/you/file').user
     'you'
+	
+	>>> path2('.').mod
+	'0775'
 
-    >>> [(element.user, element.group, element.mod) for element in path('.')]
+    >>> [(element.user, element.group, element.mod) for element in path2('.')]
     [('user', 'user', '0664'),
      ('user', 'user', '0664'),
      ('user', 'user', '0664'),
@@ -51,24 +63,29 @@ approach to path handling in Python.
      ('user', 'user', '0664')]
 
 
-Path is also  a instance of basestring so all  methods implemented for
+The **path2** object is also a instance of basestring so all methods implemented for
 [string/unicode](http://docs.python.org/2/library/stdtypes.html#string-methods)
-should work as well.
+will work as well.
 
 	:::python
 	
-	>>> path('/home/user/Projects/os.path2').split('/')
+	>>> path2('/home/user/Projects/os.path2').split('/')
 	['', 'home', 'user', 'Projects', 'os.path2']
 
-	>>> path('/home/user/test_tmp_directory').replace('_', '-')
+	>>> path2('/home/user/test_tmp_directory').replace('_', '-')
 	'/home/user/test-tmp-directory'
 	
-	>>> location = path('/home/user/test_tmp_directory')
+	>>> location = path2('/home/user/test_tmp_directory')
 	>>> location.mv(location.replace('_', '-'))
 
 
-Since I didn't want to copy and paste API all calls here, if you are still interested visit os.path2 docs site
+If you are interested, give it a go. 
+Full API description if available [here](http://ospath2.xando.org/en/latest/). 
+The code is on [github](http://ospath2.xando.org/). 
+The package is available usual way from PyPi.
 
+	:::bash
+	$ pip install os.path2
 
 Alternatives
 ------------
@@ -82,7 +99,7 @@ and have similar approach to solve the path problem:
 * [Unipath](https://github.com/mikeorr/Unipath) by Mike Orr.
 
 
-And There are actually two PEPs about it as well
+And there are actually two PEPs about it as well:
 
 * [PEP 355](http://www.python.org/dev/peps/pep-0355/) (2006 rejected), 
 * [PEP 428](http://www.python.org/dev/peps/pep-0428/) (2012 draft).
