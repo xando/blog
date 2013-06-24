@@ -17,10 +17,22 @@ class StaticSite(buzzy.Base):
             render.markdown(post.replace('md','html'), post) for post in
             buzzy.path('posts')
         ]
+        results = [
+            post for post in results if post.meta.get('status') == "publish"
+        ]
         results.sort(
             key=lambda x:parser.parse(x.meta['date']), reverse=True
         )
         return results
+
+    @buzzy.register
+    def preview_post(self):
+        for post_file in buzzy.path('posts'):
+            target = post_file\
+                .replace('md','html')\
+                .replace('posts/', 'posts/preview/')
+            post = render.markdown(target, post_file)
+            yield render.template(post.name, "post.html", post=post)
 
     @buzzy.register
     def pygments(self):

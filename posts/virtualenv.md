@@ -1,7 +1,7 @@
 Title:   Virtualenv in Python and how I roll!
 Summary: A brief description of my document.
 Date:    May 2, 2013
-Publish: True
+status:  publish
 
 
 # Virtualenv in Python and how I roll! #

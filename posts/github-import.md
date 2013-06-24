@@ -1,7 +1,7 @@
 Title:   Import python modules from Github (PEP 303)
 Summary: A brief description of my document.
 Date:    January 15, 2013
-Publish: True
+status:  publish
 
 
 # Import python modules from Github (PEP 303) #
