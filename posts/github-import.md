@@ -15,7 +15,7 @@ or what if this would be possible?
 
 
 Recently I've created a simple library which is a proof of concept for
-this idea in python.  Thanks to
+this idea in Python.  Thanks to
 [PEP 302](http://www.python.org/dev/peps/pep-0302/) apparently it's
 quite possible.
 
