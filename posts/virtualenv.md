@@ -42,8 +42,6 @@ and
 [http://virtualenvwrapper.readthedocs.org](http://virtualenvwrapper.readthedocs.org)
 
 
-* * * * *
-
 
 ## How I roll ##
 
@@ -138,6 +136,3 @@ created, the symlink to **site-packages** will be created as well.
 The last thing worth mentioning is that when you leave the range of
 upsearch, virtualenv will be deactivated, which means that you're not
 going to drag it to different projects or locations in your system.
-
-
-* * * * *
