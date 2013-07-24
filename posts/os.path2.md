@@ -4,33 +4,17 @@ status:  publish
 
 # from os import path2
 
-There are few things that are a bit annoying for me in **os** module inside
-Python standard library. One of those things surely for me would be
-the **os.path** module and path handling in it. Python as objected oriented
-language, and it has this really cool idea that everything is an object, even
-class definition and functions are objects. 
+There are a few things that are a bit annoying in the **os** module inside the Python standard library. For me, one of the biggest bugbears is the **os.path** module, and path handling within this. Python, as an object oriented language, has this really cool idea that everything is an object; even class definition and functions are objects. So how come the path module is different?
 
-Well path is a object as well
-in there but it's a string object not a **path** object. 
-Since is really easy to observe that by design files and 
-directories have something more to say about themselves than a string object can carry.
+Well, path is an object as well, but it's a string object, not a **path** object. Since it is really easy to observe that files and directories have something to say about themselves by design, and that what they say is more than a string object can carry, I decided to write a simple alternative.
 
 ## the thing
 
-Python is often compared with Ruby, so let's have a look how things are
-done there in
-[Pathname](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/pathname/rdoc/Pathname.html).
-Despite the fact if you like Ruby or not, 
-I think we can say that the **Pathname** API is pretty good. 
-So following few ideas borrowed Ruby, I decided to propose something on this subject and decided to create my own path implementation. 
-As a result created an Python package called it [os.path2](http://ospath2.xando.org/) the new version of **os.path** with a "more" object oriented
-approach to path handling in Python. 
+Python is often compared with Ruby, so let's have a look at how things are done there in 
+[Pathname](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/pathname/rdoc/Pathname.html). Whether or not you are a Ruby fan, I think we can say that the **Pathname** API is pretty good. Following a few ideas borrowed Ruby, I decided to propose something on this subject and create my own path implementation. As a result, I created a Python package and called it [os.path2](http://ospath2.xando.org/), which would be the new version of **os.path** with a ‘more’ object oriented approach to path handling in Python.
 
+Below are a few examples of what is possible with the package.
 
-Bellow few examples what is possible with the package.
-
-
-*********
 
 	:::python
 	
@@ -63,9 +47,9 @@ Bellow few examples what is possible with the package.
      ('user', 'user', '0664')]
 
 
-The **path2** object is also a instance of basestring so all methods implemented for
-[string/unicode](http://docs.python.org/2/library/stdtypes.html#string-methods)
-will work as well.
+The **path2** object is also an instance of basestring, so all methods implemented for 
+[string/unicode](http://docs.python.org/2/library/stdtypes.html#string-methods) 
+will work here as well.
 
 	:::python
 	
@@ -80,9 +64,9 @@ will work as well.
 
 
 If you are interested, give it a go. 
-Full API description if available [here](http://ospath2.xando.org/en/latest/). 
+The full API description if available [here](http://ospath2.xando.org/en/latest/). 
 The code is on [github](http://ospath2.xando.org/). 
-The package is available usual way from PyPi.
+The package is available in the usual way, from PyPi.
 
 	:::bash
 	$ pip install os.path2
@@ -90,9 +74,7 @@ The package is available usual way from PyPi.
 Alternatives
 ------------
 
-The idea is not new. Even though I really like me implementation, need to be honest here 
-and point few other **path** projects that were create a bit earlier than mine 
-and have similar approach to solve the path problem:
+This idea is not new. Even though I really like my implementation, I need to be honest here and suggest a few other **path** projects that were created a bit earlier than mine and have broadly similar approaches to solving the path problem:
 
 
 * [path.py](https://github.com/jaraco/path.py) by Jason R. Coombs,

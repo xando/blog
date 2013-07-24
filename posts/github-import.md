@@ -1,10 +1,10 @@
-Title:   Import python modules from Github (PEP 303)
+Title:   Import Python modules from Github (PEP 303)
 Summary: A brief description of my document.
 Date:    January 15, 2013
 status:  publish
 
 
-# Import python modules from Github (PEP 303) #
+# Import Python modules from Github (PEP 303) #
 
 or what if this would be possible?
 

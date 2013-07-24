@@ -4,8 +4,6 @@ status:  publish
 
 # Using Celery for queuing requests at ServerDensity
 
-Text by me, that appeared on ServerDensity Blog 
+Text by me, via ServerDensity's blog page
 
 [http://blog.serverdensity.com/using-celery-for-queuing-requests/](http://blog.serverdensity.com/using-celery-for-queuing-requests/)
-
-

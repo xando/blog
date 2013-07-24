@@ -5,6 +5,7 @@ from datetime import datetime
 from dateutil import parser
 from pygments.formatters import HtmlFormatter
 
+from buzzy.packages import run
 
 class StaticSite(buzzy.Base):
 
@@ -62,12 +63,13 @@ class StaticSite(buzzy.Base):
     def publish(self, args):
         self._build()
 
-        with buzzy.path(self.BUILD_DIR) as p:
-            p.run('git init')
-            p.run('git remote add origin git@github.com:xando/xando.github.com.git')
-            p.run('git add -A')
-            p.run('git commit -m "published"')
-            p.run('git push --force')
+        p = buzzy.path(self.BUILD_DIR)
+
+        run('git init')
+        run('git remote add origin git@github.com:xando/xando.github.com.git')
+        run('git add -A')
+        run('git commit -m "published"')
+        run('git push --force')
         print "Published %s" % datetime.now()
 
 
