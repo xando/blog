@@ -11,9 +11,8 @@
     {% for post in posts %}
     <item>
       <title>{{ post.meta.title }}</title>
-      <link>{{ post.name }}</link>
-      <pubDate>{{ post.meta.date }}</pubDate>
-      <guid>{{ post.name }}</guid>
+      <link>http://xando.org/{{ post.name }}</link>
+      <description>{{ post.content }}</description>
     </item>
     {% endfor %}
     {% endblock %}

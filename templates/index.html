@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for post in posts %}
-<h1>
-	<a href="{{ post.name }}">{{ post.meta.title }}</a>
-</h1>
-<i>{{ post.meta.date }}</i>
-{% endfor %}
+  {% for post in posts %}
+    <h1><a href="/blog/{{ post.name }}">{{ post.meta.title }}</a></h1>
+    <i>{{ post.meta.date }}</i>
+  {% endfor %}
 {% endblock %}
