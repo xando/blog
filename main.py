@@ -46,6 +46,10 @@ class StaticSite(buzzy.Base):
     def about(self):
         yield buzzy.render.template('about.html', 'about.html')
 
+    @buzzy.register
+    def about(self):
+        yield buzzy.render.template('cv.html', 'cv.html')
+
     @buzzy.command
     def deploy(self, args):
         self.build(args)
