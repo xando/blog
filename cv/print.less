@@ -1,0 +1,46 @@
+@fontsize: 15px;
+
+body {
+    font-size: @fontsize;
+}
+
+section {
+    // padding: 7px 0;
+    hgroup {
+		font-size: @fontsize + 9;
+		margin: 0 0 8px 0;
+    }
+    h1 {
+		margin: 15px 0 0 0;
+		font-size: @fontsize;
+		span {
+			font-size: @fontsize+1;
+		}
+    }
+}
+
+a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+img {
+    box-shadow: none !important;
+}
+
+.print-only {
+    display:block;
+}
+
+
+.print-only-inline {
+    display:inline;
+}
+
+.online-only {
+    display:none !important;
+}
+
+.breakpage {
+    page-break-before: always;
+}

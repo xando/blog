@@ -1,0 +1,129 @@
+@fontsize: 14px;
+
+body {
+    font-size: @fontsize;
+    font-family: 'Petrona', serif;
+    // background: url('images/noise.jpg');
+    line-height: 23px;
+    text-align: justify;
+    height: 100%
+}
+
+header, section, footer {
+    width: 1000px;
+    height: 100%;
+    margin: 30px 0 0 36px;
+}
+
+header {
+	about {
+		font-size: 15px;
+	}
+    hgroup {
+		// font-family: 'Merriweather Sans', sans-serif;
+		font-family: 'Andika', sans-serif;
+		font-weight: 900;
+		margin: 0 0 16px 0;
+		font-size: @fontsize + 40;
+		border-bottom: 2px solid #bbb;
+		line-height: 60px;
+    }
+    ul {
+		font-size: @fontsize + 5;
+		list-style: none outside none;
+		padding: 0;
+    }
+    img {
+		cursor: pointer;
+		float: right;
+		box-shadow: 2px 2px 10px #aaa;
+		width: 160px;
+		padding: 5px;
+		background: white;
+		border: 1px solid #AAA;
+		margin: -14px 15px 0 0;
+    }
+    p {
+		font-family: 'Arapey', serif;
+		font-size: @fontsize + 4;
+		color: #444;
+		font-style: italic;
+		margin: 25px 0 0 0;
+		width: 550px;
+    }
+}
+
+section {
+    // margin: 0;
+    padding: 16px 0;
+    hgroup {
+		margin: 0 0 12px 0;
+		font-weight: bold;
+		font-size: @fontsize + 9;
+		border-bottom: 1px solid #999;
+		font-family: 'Merriweather Sans', sans-serif;
+		// font-family: 'Mate SC', serif;
+    }
+    h1 {
+		font-size: @fontsize + 5;
+		position: relative;
+		margin: 15px 0 0 0;
+		font-family: 'Petrona', serif;
+		a {
+			text-decoration: none;
+		}
+		// font-family: 'Merriweather Sans', sans-serif;
+		span {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			font-style: italic;
+			// font-family: 'Arapey', serif;
+			font-size: @fontsize+1;
+			color: #999;
+			font-weight: normal;
+		}
+
+		a.github {
+			background: url('images/github-icon.png');
+			width: 24px;
+			height: 24px;
+			display: inline-block;
+			vertical-align: -5px;
+			margin-right: 5px;
+		}
+    }
+    ul {
+		&.description {
+			list-style: none;
+			padding: 0 0 0 0px;
+		}
+		margin: 0;
+		padding: 0 0 0 17px;
+		width: 740px;
+    }
+    p {
+		margin: 0 0 0 0;
+		width: 740px;
+    }
+
+}
+
+footer {
+    // margin: 50px 0 0;
+    text-align: center;
+    font-family: 'Arapey', serif;
+    font-size: @fontsize - 2;
+    font-style: italic;
+}
+
+a {
+    color: #555;
+    &:hover {
+		color: black;
+    }
+}
+
+.print-only {
+    display:none;
+}

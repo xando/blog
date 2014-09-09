@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Sebastian Pawluś</title>
+		<link rel="stylesheet" type="text/css" href="fonts.css" />
+		<link rel="stylesheet/less" type="text/css" media="print, screen" href="style.less"/>
+		<link rel="stylesheet/less" type="text/css" media="print" href="print.less"/>
+		<link href="http://fonts.googleapis.com/css?family=Playball" rel="stylesheet" type="text/css">
+
+		<script src="less-1.1.3.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+		<script>
+			$(document).ready(function() {
+			$("header img").hover(
+			function () {
+		    $(this).attr('src', "images/xando.jpg");
+			},
+			function () {
+		    $(this).attr('src', "images/20110929_009.jpg");
+			}
+			);
+
+			$("footer .print-only a")
+			.attr("href","document.URL")
+			.html(document.URL);
+			});
+
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-11337039-14', 'xando.org');
+			ga('send', 'pageview');
+		</script>
+
+	</head>
+
+	<body>
+		<header>
+			<img src="images/20110929_009.jpg" alt="Sebastian Pawluś" id="pic" />
+			<hgroup class="fn">SEBASTIAN PAWLUŚ</hgroup>
+			<i class="about">
+				A developer, Linux supporter and Emacs user.
+				Constantly trying to learn Haskell and waiting for Linux's year to come. <br/>
+				Works closely to a black screen of the Linux terminal.
+				Sometimes responsible for contributing to 'the greater good'.
+			</i>
+			<div id="contact-info">
+				<ul>
+					<li><b>phone:</b>
+						<span class="tel">0048 695731917</span>
+					</li>
+					<li><b>email:</b>
+						<a class="email" href="mailto:sebastian.pawlus@gmail.com">
+  							sebastian.pawlus@gmail.com</a>
+					</li>
+					<li><b>github:</b>
+						<a target="_blank" href="https://github.com/xando">xando</a>
+					</li>
+					<li><b>located:</b>
+						Kraków, London
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<section>
+			<hgroup>Experience</hgroup>
+
+			<h1>
+				<a href="https://www.serverdensity.com">Server Density</a>
+				<span>Software Engineer, current</span>
+			</h1>
+			<ul>
+				<li>
+					Member of a product engineering team.
+				</li>
+				<li>
+					Responsible for the
+					<a href="https://www.serverdensity.com/website-monitoring/">Service Monitoring</a> platform.
+				</li>
+			</ul>
+			<ul class="print-only">
+				<li><b>Company website:</b> https://www.serverdensity.com</li>
+				<li><b>Company blog:</b> http://blog.serverdensity.com</li>
+			</ul>
+
+			<h1>
+				<a href="http://www.potatolondon.co.uk">Potato London</a>
+				(<a href="http://www.google.com/culturalinstitute/">Google Vendor</a>)
+				<span>Software Engineer, 2012 (1 year)</span>
+			</h1>
+			<ul>
+				<li>
+					Contracted work, part of
+					<a href="http://googleartproject.com">Google Art Project</a> Software Engineering team.
+				</li>
+				<li>
+					Responsible for implementation of high-scale applications with use of
+					<a href="https://developers.google.com/appengine/">Google AppEngine</a> platform.
+				</li>
+			</ul>
+			<ul class="print-only">
+				<li><b>Company website:</b> http://potatolondon.co.uk</li>
+				<li><b>Project website:</b> http://googleartproject.com</li>
+			</ul>
+
+			<h1>
+				<a href="http://www.binop.com">Binop Consulting Group</a>
+				(<a href="http://www.nokia.com">Nokia Vendor</a>)
+				<span>Software Engineer, 2008-2011 (3 years)</span>
+			</h1>
+			<ul>
+				<li>Contracted work, part of
+					Nokia Meego QA infrastructure tools.
+				</li>
+				<li>Responsible for a development of Nokia
+					internal infrastructure webtools to software production process.
+				</li>
+			</ul>
+			<ul class="print-only">
+				<li><b>Company website: </b>http://binop.com</li>
+			</ul>
+
+			<h1>
+				<a href="http://www.u2i.com">Union Square Internet Development
+				</a><span>Software Engineer, 2007-2008 (14 months)</span>
+			</h1>
+			<ul>
+				<li>Working on the Freshpair e-commerce solution
+					(biggest online underwear shop).
+				</li>
+				<li>Responsible for a backend development of
+					<a href="http://freshpair.com">freshpair.com</a> online shop.</li>
+			</ul>
+			<ul class="print-only">
+				<li><b>Company website:</b> http://u2i.com</li>
+				<li><b>Project website:</b> http://freshpair.com</li>
+			</ul>
+		</section>
+
+		<section>
+			<hgroup>Profesional Skills</hgroup>
+			<h1>Programming Languages</h1>
+			<ul>
+				<li>Python: Django, Tornado, Celery, AppEngine, ...</li>
+				<li>JavaScript</li>
+				<li>Some knowlege of: Java, Ruby, C++(Qt)</li>
+			</ul>
+
+			<h1>Databases</h1>
+			MongoDB, MySQL, PostgreSQL, SQLite.
+
+			<h1>Version Controls Systems</h1>
+			Git, Subversion.
+
+			<h1>Operating Systems</h1>
+			<ul>
+				<li>Linux Debian based distributions: Ubuntu, Debian, Maemo.</li>
+				<li>Some Windows knowledge.</li>
+			</ul>
+
+			<h1>Networks</h1>
+			Networks: CCNA course.
+		</section>
+
+		<div class="breakpage"></div>
+
+		<section>
+			<hgroup>Personal Projects</hgroup>
+
+			<h1>
+				<a target="_blank" href="http://progpac.com/">progpac.com</a>
+			</h1>
+			<p>
+				Python and JavaScript web application. Write a simple code to collect all stars.
+				A simple game, which tries explains some of the simplest programming concepts
+				[<a href="https://github.com/xando/progpac">source code</a>].
+				<ul class="print-only">
+					<li>
+						<b>website: </b>
+						http://progpac.com/
+					</li>
+					<li>
+						<b>source code: </b>
+						https://github.com/xando/progpac
+					</li>
+				</ul>
+			</p>
+
+			<h1>
+				<a target="_blank" href="http://subprocessrun.xando.org">subprocess.run</a>
+			</h1>
+			<p>
+				Python package. The subprocess package extension to help with an external process execution
+				[<a href="https://github.com/xando/subprocess.run">source code</a>].
+				<ul class="print-only">
+					<li><b>website: </b>http://subprocessrun.xando.org</li>
+					<li><b>source code: </b> https://github.com/xando/subprocess.run</li>
+				</ul>
+			</p>
+
+			<h1>
+				<a target="_blank" href="http://ospath2.xando.org">os.path2</a>
+			</h1>
+			<p>
+				Python package. The os.path replacement library, with a simple, object oriented API
+				[<a href="https://github.com/xando/os.path2">source code</a>].
+				<ul class="print-only">
+					<li><b>website: </b>http://ospath2.xando.org</li>
+					<li><b>source code: </b> https://github.com/xando/os.path2</li>
+				</ul>
+			</p>
+
+
+			<h1>
+				<a target="_blank" href="http://buzzy.xando.org">buzzy</a>
+			</h1>
+			<p>
+				Python package. Simple static pages generator. Goal  was to
+				create an easy to use low level API to create static pages.
+				Tool used to generate this page
+				[<a href="https://github.com/xando/buzzy">source code</a>].
+
+				<ul class="print-only">
+					<li><b>website: </b>http://buzzy.xando.com</li>
+					<li><b>source code: </b> https://github.com/xando/buzzy</li>
+				</ul>
+			</p>
+		</section>
+
+		<section>
+			<hgroup>Education</hgroup>
+			<h1>
+				MSc Computer Science 2011,
+				<a href="http://www.agh.edu.pl/en">AGH University of Science and Technology Cracow</a>
+			</h1>
+			<ul class="description">
+				<li><strong>Thesis:</strong>
+					The architecture of distributed systems for business purposes
+					based on the Maemo platform.</li>
+			</ul>
+			<h1>
+				MSc Management 2009,
+				<a href="http://www.agh.edu.pl/en">AGH University of Science and Technology Cracow</a>
+			</h1>
+			<ul class="description">
+				<li><strong>Thesis:</strong>
+					Project management in geographically distributed environments.</li>
+			</ul>
+		</section>
+
+		<section>
+			<hgroup>Languages</hgroup>
+			<ul class="description">
+				<li><b>Polish:</b> native.</li>
+				<li><b>English:</b> good speaking and writing skills.</li>
+			</ul>
+		</section>
+
+		<section>
+			<hgroup>Others</hgroup>
+			<ul>
+				<li>PyCon PL conference co-organizer.</li>
+				<li>Sometimes I write
+					<a target="_blank" href="http://xando.org">http://xando.org</a>
+				</li>
+				<li>Well motivated to use Google Search.</li>
+			</ul>
+		</section>
+
+		<footer>
+			<div class="print-only">
+				Online version:
+				<a href="/">/</a>
+			</div>
+
+			<div class="online-only">
+				PDF version
+				<a href="Sebastian_Pawlus.pdf">Sebastian_Pawlus.pdf</a>
+			</div>
+
+		</footer>
+
+	</body>
+
+</html>

@@ -8,7 +8,7 @@ from pygments.formatters import HtmlFormatter
 class StaticSite(buzzy.Base):
 
     PYGMENTS_STYLE = "emacs"
-    INCLUDE = ['CNAME', 'libs/', 'img/']
+    INCLUDE = ['CNAME', 'libs/', 'img/', 'cv/']
 
     @buzzy.register
     def blog(self):
