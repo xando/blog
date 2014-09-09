@@ -1,6 +1,6 @@
 Title:   I wrote a game, a really simple one
-Date:    May 11, 2013
-Pu
+Date:    11-05-2013
+
 
 
 # I wrote a game, a really simple one
