@@ -1,5 +1,6 @@
 import os
 import buzzy
+import subprocess
 
 from datetime import datetime
 from pygments.formatters import HtmlFormatter
